@@ -1,4 +1,5 @@
 import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 
 class weatherModel {
   String cityName;
@@ -30,10 +31,13 @@ class weatherModel {
         max_temp: data["forecast"]["forecastday"][0]["day"]["maxtemp_c"]);
 
  }
- @override
-  String toString() {
-    // TODO: implement toString
-    return 'temp= $av_temp   and max=$max_temp';
-  }
-}
+   MaterialColor  getThemColor(){
+      if(state=='Sunny'||state=='Clear'||state=='light Cloud')
+        {return Colors.orange;}
+        else if(state=='Heavy Cloud'||state=='blue Grey')
+        {return Colors.blueGrey;}
+        else {
+             return  Colors.blue;
+    }
+}}
 

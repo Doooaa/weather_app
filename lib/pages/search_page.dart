@@ -4,7 +4,8 @@ import 'package:weathr_app/sevices/weather_serices.dart';
 
 class SearchPage extends StatelessWidget {
   String? cityName;
-
+   VoidCallback? updateUi;
+   SearchPage({this.updateUi});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,14 +18,26 @@ class SearchPage extends StatelessWidget {
                 image: AssetImage('asset/images/xx.gif'), fit: BoxFit.cover)),
         child: Center(
           child: TextField(
-            style: TextStyle(color: Colors.white),
+          style: TextStyle(color: Colors.white),
+
+
+
+
             onSubmitted: (data) async {
               cityName = data;
-              weatherServices service = new weatherServices();
-              weatherModel weather =
-                  await service.getweather(cityName: cityName!);
-              print(weather);
+              weatherServices service = weatherServices();
+              weatherModel weather = await service.getweather(cityName: cityName!);
+                  //print(weather);
+
+               weatherData=weather;
+               updateUi!();
+              Navigator.pop(context);
+
             },
+
+
+
+
             decoration: InputDecoration(
               hintStyle: TextStyle(color: Colors.white70),
               labelStyle: TextStyle(color: Colors.white),
@@ -60,3 +73,4 @@ class SearchPage extends StatelessWidget {
     );
   }
 }
+ weatherModel? weatherData;
