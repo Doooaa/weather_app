@@ -5,18 +5,19 @@ String getImage() {
   String state = weatherData!.state.toString();
   if (state == 'Sunny' || state == 'Clear' || state == 'light Cloud') {
     return 'asset/images/sunyy.jpg';
-  } 
-  else if (state == 'Heavy Cloud' || state == 'blue Grey') {
+  } else if (state == 'Heavy Cloud' || state == 'blue Grey') {
     return 'asset/images/clouds.jpg';
-  } 
-  else if (state == 'Sleet' ||
+  } else if (state == 'Sleet' ||
       state == 'Snow' ||
       state == 'Hail' ||
       state == 'light Rain' ||
       state == 'Showers') {
     return 'asset/images/snow.jpg';
-  } 
-  else {
+  } else {
     return 'asset/images/rain.jpg';
   }
+}
+
+TextStyle StyleText() {
+  return const TextStyle(color: Color.fromARGB(255, 38, 29, 108), fontSize: 17);
 }

@@ -9,6 +9,8 @@ class weatherModel {
   double av_temp;
   double  min_temp;
   double  max_temp;
+  double windSpeed;
+  int  cloud;
   weatherModel(
       {required this.cityName,
       required this.date,
@@ -16,7 +18,11 @@ class weatherModel {
       required this.imageState,
       required this.av_temp,
       required this.min_temp,
-      required this.max_temp});
+      required this.max_temp,
+      required this.windSpeed,
+      required this.cloud, 
+      
+      });
 
  factory weatherModel.fromjson(data) {
 //factory to make it un nullabe 
@@ -28,7 +34,9 @@ class weatherModel {
             ["icon"],
         av_temp: data["forecast"]["forecastday"][0]["day"]["avgtemp_c"],
         min_temp: data["forecast"]["forecastday"][0]["day"]["mintemp_c"],
-        max_temp: data["forecast"]["forecastday"][0]["day"]["maxtemp_c"]);
+        max_temp: data["forecast"]["forecastday"][0]["day"]["maxtemp_c"],
+        windSpeed: data["current"]["wind_kph"],
+        cloud: data["current"]["cloud"]);
 
  }
    MaterialColor  getThemColor(){
