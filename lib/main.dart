@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:weathr_app/pages/home.dart';
-import 'package:weathr_app/pages/search_page.dart';
+
 
 
 void main() {

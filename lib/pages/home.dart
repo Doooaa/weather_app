@@ -1,7 +1,8 @@
 import 'dart:ui';
+import 'weather_data_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:weathr_app/weather_model.dart';
 import 'package:weathr_app/pages/search_page.dart';
+
 
 
 class home_page extends StatefulWidget {
@@ -24,14 +25,16 @@ class _home_pageState extends State<home_page> {
             appBar: AppBar(
               title: Text('hooooooom'),
             ),
-            body:
-              //.......................................background..........
-
-               Column(
-                
-                
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
+             //.......................................background..........
+            body:new Stack(
+        fit: StackFit.expand,
+        children: <Widget>[
+          //generateBluredImage(),
+          new Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children:
+  
+            [
                   Center(
                     child: Row(
                       children: [
@@ -59,68 +62,11 @@ class _home_pageState extends State<home_page> {
                     ),
                   )
                 ],
-              ),
+          )
+          ]
+          )
             
         )
-        : Scaffold(
-            body: Container(
-              color: Colors.blue,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Spacer(
-                    flex: 3,
-                  ),
-                  Text(
-                    '${weatherData!.cityName.toString()}',
-                    style: TextStyle(
-                      fontSize: 27,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  Text(
-                    "${weatherData!.date.toString()}",
-                    style: TextStyle(
-                      fontSize: 12,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  Spacer(),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Expanded(
-                        child: Image.network(
-                          '${'https:' + weatherData!.imageState.toString()}',
-                          loadingBuilder: (context, child, progress) {
-                            if (progress == null) {
-                              return child;
-                            }
-                            return CircularProgressIndicator();
-                          },
-                          errorBuilder: (context, error, stackTrace) {
-                            return Text('Error loading image');
-                          },
-                        ),
-                      ),
-                      Expanded(
-                          child: Text('${weatherData!.av_temp.toString()}')),
-                      Column(children: [
-                        Text(
-                            'max temprture :${weatherData!.max_temp.toString()}'),
-                        Text(
-                            'min temprture :${weatherData!.min_temp.toString()}')
-                      ]),
-                    ],
-                  ),
-                  Spacer(),
-                  Text('${weatherData!.state.toString()}'),
-                  Spacer(
-                    flex: 5,
-                  ),
-                ],
-              ),
-            ),
-          );
+        :DislayWeatherData(); 
   }
 }

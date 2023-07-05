@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:weathr_app/weather_model.dart';
+import 'package:weathr_app/models/weather_model.dart';
 import 'package:weathr_app/sevices/weather_serices.dart';
 
+// ignore: must_be_immutable
 class SearchPage extends StatelessWidget {
   String? cityName;
    VoidCallback? updateUi;
